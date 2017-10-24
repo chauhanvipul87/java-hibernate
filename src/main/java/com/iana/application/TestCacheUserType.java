@@ -4,6 +4,7 @@ package com.iana.application;
 import com.iana.application.entities.UserType;
 import com.iana.application.utils.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.ArrayList;
@@ -12,10 +13,15 @@ import java.util.List;
 
 public class TestCacheUserType {
 
+    private static SessionFactory sessionFactory = null;
+    public TestCacheUserType(){
+        System.out.println("in constructor..");
+        sessionFactory = new HibernateUtil().getSessionFactory();
+    }
+
     //Dummy Record creation ...
     private static void dummyDataCreation(){
-
-        Session session = new HibernateUtil().getSessionFactory().openSession();
+        Session session = TestCacheUserType.sessionFactory.openSession();
         //once transient object attached to hibernate, it became persistent object state
         Transaction tx = session.beginTransaction();
 
@@ -50,14 +56,15 @@ public class TestCacheUserType {
     }
 
     public static void main(String[] args) {
-
+        new TestCacheUserType();
         //dummyDataCreation();
         fetchAllUserTypes();
 
     }
 
     private static void fetchAllUserTypes() {
-        Session session = new HibernateUtil().getSessionFactory().openSession();
+
+        Session session = TestCacheUserType.sessionFactory.openSession();
 
         UserType userType =  (UserType) session.get(UserType.class, 1L);
         System.out.println("1.--- userType = " + userType);
@@ -69,6 +76,22 @@ public class TestCacheUserType {
 
         userType =  (UserType) session.get(UserType.class, 3L);
         System.out.println("3.--- userType = " + userType);
+
+        session.close();
+
+        System.out.println("............in second time..........");
+        session = TestCacheUserType.sessionFactory.openSession();
+
+        userType =  (UserType) session.get(UserType.class, 1L);
+        System.out.println("4.--- userType = " + userType);
+
+
+        userType =  (UserType) session.get(UserType.class, 1L);
+        System.out.println("5.--- userType = " + userType);
+
+
+        userType =  (UserType) session.get(UserType.class, 3L);
+        System.out.println("6.--- userType = " + userType);
 
         session.close();
     }
