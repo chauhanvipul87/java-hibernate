@@ -1,4 +1,4 @@
-package com.iana.application;
+package com.iana.application.test;
 
 import com.iana.application.entities.student_entities.SchoolAddress;
 import com.iana.application.entities.student_entities.Student;

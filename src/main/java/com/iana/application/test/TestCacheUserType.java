@@ -1,4 +1,4 @@
-package com.iana.application;
+package com.iana.application.test;
 
 
 import com.iana.application.entities.caching.UserType;
@@ -55,13 +55,6 @@ public class TestCacheUserType {
         session.close();
     }
 
-    public static void main(String[] args) {
-        new TestCacheUserType();
-        //dummyDataCreation();
-        fetchAllUserTypes();
-
-    }
-
     private static void fetchAllUserTypes() {
 
         Session session = TestCacheUserType.sessionFactory.openSession();
@@ -104,5 +97,11 @@ public class TestCacheUserType {
         session.close();
     }
 
+    public static void main(String[] args) {
+        new TestCacheUserType();
+        //dummyDataCreation();
+        fetchAllUserTypes();
+
+    }
 
 }

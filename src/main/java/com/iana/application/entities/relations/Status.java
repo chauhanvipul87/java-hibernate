@@ -35,12 +35,14 @@ public class Status {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Status{" +
-                "statusId=" + statusId +
-                ", status='" + status + '\'' +
-                '}';
+    public List<Customer> getListCustomer() {
+        return listCustomer;
     }
+
+    public void setListCustomer(List<Customer> listCustomer) {
+        this.listCustomer = listCustomer;
+    }
+
+
 
 }
