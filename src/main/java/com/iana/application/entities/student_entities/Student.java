@@ -1,4 +1,4 @@
-package com.iana.application.entities;
+package com.iana.application.entities.student_entities;
 
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
@@ -29,12 +29,15 @@ public class Student {
     @Embedded
     private StudentAddress studentAddress;
 
- //fetch = FetchType.LAZY
+    /*
+        if fetch = FetchType.LAZY (default) join table data is not loading until we get accessed to it. while fetch = FetchType.EAGER
+        will fetch all the association data while fetching data for first main class.
+    */
     @ElementCollection(fetch = FetchType.EAGER)
     @JoinTable(name = "student_school_address", joinColumns = @JoinColumn(name ="STUDENT_ID"))
     @GenericGenerator(name="hilo-gen", strategy="hilo")
     @CollectionId(columns = @Column(name = "SS_ADDRESS_ID") ,generator ="hilo-gen" ,type = @Type(type="long"))
-     private List<SchoolAddress> schoolAddress = new ArrayList<SchoolAddress>();
+    private List<SchoolAddress> schoolAddress = new ArrayList<SchoolAddress>();
 
 
     /* If you would like to update the join column of embeddable class in derived class then you should have to use @AssociationOverrides */

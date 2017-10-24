@@ -1,8 +1,8 @@
 package com.iana.application;
 
-import com.iana.application.entities.SchoolAddress;
-import com.iana.application.entities.Student;
-import com.iana.application.entities.StudentAddress;
+import com.iana.application.entities.student_entities.SchoolAddress;
+import com.iana.application.entities.student_entities.Student;
+import com.iana.application.entities.student_entities.StudentAddress;
 import com.iana.application.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -43,10 +43,8 @@ public class CrudStudentDemo {
     private  static void findAllStudent(){
 
         Session session = new HibernateUtil().getSessionFactory().openSession();
-         List<Student> students = session.createCriteria(Student.class).list();
-        System.out.println(students);
-       if(students.size() >= 1)
-            System.out.println("students school address= " + students.get(0).getSchoolAddress());
+        List<Student> students = session.createCriteria(Student.class).list();
+        pritingList(students);
         System.out.println("Student listed successfully.....!!");
         session.close();
 
@@ -140,35 +138,12 @@ public class CrudStudentDemo {
         System.out.println("---printing...List");
         for (Student e:students) {
             System.out.println(e);
+            if(e.getSchoolAddress().size() >= 0)
+                for (SchoolAddress st: e.getSchoolAddress()) {
+                    System.out.println("students school address= " + st);
+                }
+
         }
-    }
-
-    public static void main(String[] args) {
-
-        //add new student
-        addNewStudent();
-        //addNewStudent();
-        //addNewStudent();
-
-        //fetch all the students
-        findAllStudent();
-
-        //get one student information
-        //findOneStudent();
-
-        // delete one student from database
-        //deleteStudent();
-
-        //update student information
-         //updateStudent();
-
-        //custom query
-        //testCustomQueriesForStudent();
-
-        //test embeddable
-        //testEmbeddableFunctionality();
-
-
     }
 
     private static void testEmbeddableFunctionality() {
@@ -199,6 +174,33 @@ public class CrudStudentDemo {
         session.close();
     }
 
+    public static void main(String[] args) {
+
+        //add new student
+        addNewStudent();
+        //addNewStudent();
+        //addNewStudent();
+
+        //fetch all the students
+        findAllStudent();
+
+        //get one student information
+        //findOneStudent();
+
+        // delete one student from database
+        //deleteStudent();
+
+        //update student information
+        //updateStudent();
+
+        //custom query
+        //testCustomQueriesForStudent();
+
+        //test embeddable
+        //testEmbeddableFunctionality();
+
+
+    }
 
 
 

@@ -1,4 +1,4 @@
-package com.iana.application.entities;
+package com.iana.application.entities.caching;
 
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 

@@ -1,7 +1,7 @@
 package com.iana.application;
 
 
-import com.iana.application.entities.UserType;
+import com.iana.application.entities.caching.UserType;
 import com.iana.application.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

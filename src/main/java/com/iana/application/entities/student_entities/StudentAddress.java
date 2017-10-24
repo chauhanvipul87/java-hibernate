@@ -1,4 +1,4 @@
-package com.iana.application.entities;
+package com.iana.application.entities.student_entities;
 
 import javax.persistence.*;
 
