@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f3fc863-b828-48d6-9fc5-c1aac61a14c9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/iana/application/test/TestRelationsShip.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/need_to_develop_demo" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iana/application/entities/relations/Customer.java" afterPath="$PROJECT_DIR$/src/main/java/com/iana/application/entities/relations/Customer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/iana/application/entities/relations/Status.java" afterPath="$PROJECT_DIR$/src/main/java/com/iana/application/entities/relations/Status.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/iana/application/CrudStudentDemo.java" afterPath="$PROJECT_DIR$/src/main/java/com/iana/application/test/CrudStudentDemo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/iana/application/TestCacheUserType.java" afterPath="$PROJECT_DIR$/src/main/java/com/iana/application/test/TestCacheUserType.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1002,7 +996,7 @@
       <workItem from="1508750560912" duration="19626000" />
       <workItem from="1508783312406" duration="143000" />
       <workItem from="1508783485502" duration="104000" />
-      <workItem from="1508831686585" duration="23588000" />
+      <workItem from="1508831686585" duration="23675000" />
     </task>
     <task id="LOCAL-00001" summary="Cache support added.">
       <created>1508833835718</created>
@@ -1039,11 +1033,18 @@
       <option name="project" value="LOCAL" />
       <updated>1508854997120</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Re-fector changes for packages &amp; added relationship test for @ManyToOne &amp; @OneToMany">
+      <created>1508862114172</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1508862114172</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49284000" />
+    <option name="totallyTimeSpent" value="49371000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1127,7 +1128,8 @@
     <MESSAGE value="Cache support added." />
     <MESSAGE value="Added many things like @ElementCollection which will only work on collection, @JoinTable, @JoinColumns&#10;@JoinColumn, custom ID generator @CollectionId &amp; use of @GenericGenerator." />
     <MESSAGE value="Re-fector changes for packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re-fector changes for packages" />
+    <MESSAGE value="Re-fector changes for packages &amp; added relationship test for @ManyToOne &amp; @OneToMany" />
+    <option name="LAST_COMMIT_MESSAGE" value="Re-fector changes for packages &amp; added relationship test for @ManyToOne &amp; @OneToMany" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
