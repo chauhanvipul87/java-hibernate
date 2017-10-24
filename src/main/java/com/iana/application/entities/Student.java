@@ -1,6 +1,12 @@
 package com.iana.application.entities;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -22,6 +28,13 @@ public class Student {
 
     @Embedded
     private StudentAddress studentAddress;
+
+ //fetch = FetchType.LAZY
+    @ElementCollection(fetch = FetchType.EAGER)
+    @JoinTable(name = "student_school_address", joinColumns = @JoinColumn(name ="STUDENT_ID"))
+    @GenericGenerator(name="hilo-gen", strategy="hilo")
+    @CollectionId(columns = @Column(name = "SS_ADDRESS_ID") ,generator ="hilo-gen" ,type = @Type(type="long"))
+     private List<SchoolAddress> schoolAddress = new ArrayList<SchoolAddress>();
 
 
     /* If you would like to update the join column of embeddable class in derived class then you should have to use @AssociationOverrides */
@@ -86,6 +99,14 @@ public class Student {
         this.localStudentAddress = localStudentAddress;
     }
 
+    public List<SchoolAddress> getSchoolAddress() {
+        return schoolAddress;
+    }
+
+    public void setSchoolAddress(List<SchoolAddress> schoolAddress) {
+        this.schoolAddress = schoolAddress;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -94,6 +115,7 @@ public class Student {
                 ", department='" + department + '\'' +
                 ", college='" + college + '\'' +
                 ", studentAddress=" + studentAddress +
+                ", schoolAddress=" + schoolAddress +
                 ", localStudentAddress=" + localStudentAddress +
                 '}';
     }

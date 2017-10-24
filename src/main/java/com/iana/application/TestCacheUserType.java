@@ -77,9 +77,17 @@ public class TestCacheUserType {
         userType =  (UserType) session.get(UserType.class, 3L);
         System.out.println("3.--- userType = " + userType);
 
+        Transaction tx = session.beginTransaction();
+        //update entity to check what will happen after cached data updated
+        userType.setUserTypeName("ABCD");
+        userType.setActive('N');
+        session.save(userType);
+
+        tx.commit();
         session.close();
 
         System.out.println("............in second time..........");
+
         session = TestCacheUserType.sessionFactory.openSession();
 
         userType =  (UserType) session.get(UserType.class, 1L);

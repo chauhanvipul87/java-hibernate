@@ -1,5 +1,6 @@
 package com.iana.application;
 
+import com.iana.application.entities.SchoolAddress;
 import com.iana.application.entities.Student;
 import com.iana.application.entities.StudentAddress;
 import com.iana.application.utils.HibernateUtil;
@@ -15,7 +16,8 @@ public class CrudStudentDemo {
 
         System.out.println("in addNewStudent....:");
         Session session = new HibernateUtil().getSessionFactory().openSession();
-
+        SchoolAddress schoolAddress = new SchoolAddress("BillaBong School","Vadodara");
+        SchoolAddress schoolAddress1 = new SchoolAddress("Kidzee School","KareliBaug");
         //StudentAddress studentAddress = new StudentAddress("Opp.Indian Oil Petrol Pump","Vadodara","Gujarat","390011");
 
         //transient object state
@@ -23,6 +25,8 @@ public class CrudStudentDemo {
         std.setName("Jamil");
         std.setDepartment("ECE");
         std.setCollege("SKCET");
+        std.getSchoolAddress().add(schoolAddress);
+        std.getSchoolAddress().add(schoolAddress1);
        // std.setStudentAddress(studentAddress);
         //once transient object attached to hibernate, it became persistent object state
         Transaction tx = session.beginTransaction();
@@ -41,6 +45,8 @@ public class CrudStudentDemo {
         Session session = new HibernateUtil().getSessionFactory().openSession();
          List<Student> students = session.createCriteria(Student.class).list();
         System.out.println(students);
+       if(students.size() >= 1)
+            System.out.println("students school address= " + students.get(0).getSchoolAddress());
         System.out.println("Student listed successfully.....!!");
         session.close();
 
@@ -140,12 +146,12 @@ public class CrudStudentDemo {
     public static void main(String[] args) {
 
         //add new student
-        //addNewStudent();
+        addNewStudent();
         //addNewStudent();
         //addNewStudent();
 
         //fetch all the students
-        //findAllStudent();
+        findAllStudent();
 
         //get one student information
         //findOneStudent();
